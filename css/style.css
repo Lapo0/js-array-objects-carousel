@@ -7,6 +7,7 @@
 
 .slide.none{
     display: none;
+    position: relative;
 }
 
 .slide.none.active{
@@ -20,7 +21,7 @@
 .arrow{
     position: absolute;
     font-size: 50px;
-    color: white;
+    color: black;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -31,4 +32,11 @@
 
 .arrow.right-arrow{
     right: 20px
+}
+
+.text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
