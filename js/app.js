@@ -66,6 +66,10 @@ for (let i = 0; i < images.length; i++) {
     container.innerHTML += slide
 }
 
+
+// feat carusel in body html
+document.body.appendChild(carosello);
+
 // ARROW
 // LEFT ARROW
 const leftArrow = document.createElement('div');
@@ -85,8 +89,6 @@ rightArrowIcon.classList.add('fa-solid', 'fa-chevron-right');
 rightArrow.appendChild(rightArrowIcon);
 container.appendChild(rightArrow);
 
-// feat carusel in body html
-document.body.appendChild(carosello);
 
 
 // CLICK SULL'ICONA
@@ -95,6 +97,14 @@ const slideElements = document.getElementsByClassName('slide')
 console.log(slideElements)
 
 let slideAttiva = 0
+
+slideAttiva = (slideAttiva + slideElements.length - 1) % slideElements.length;
+
+let slideCorrente = slideElements[slideAttiva];
+slideCorrente.classList.add('active');
+
+let slideSuccessiva = slideElements[(slideAttiva + 1) % slideElements.length];
+slideSuccessiva.classList.remove('active');
 
 // let leftArrow = document.querySelector('.left-arrow')
 // let rightArrow = document.querySelector('.right-arrow')
@@ -114,11 +124,27 @@ rightArrow.addEventListener('click', function () {
 
 leftArrow.addEventListener('click', function () {
 
-    slideAttiva = (slideAttiva + slideElements.length - 1) % slideElements.length;
+    slideAttiva = (slideAttiva + 1) % slideElements.length;
 
     let slideCorrente = slideElements[slideAttiva];
     slideCorrente.classList.add('active');
 
-    let slideSuccessiva = slideElements[(slideAttiva + 1) % slideElements.length];
-    slideSuccessiva.classList.remove('active');
+    let slidePrecedente = slideElements[(slideAttiva + slideElements.length - 1) % slideElements.length];
+    slidePrecedente.classList.remove('active');
 })
+
+const duration = setInterval(function() {
+
+    slideAttiva = (slideAttiva + 1) % slideElements.length;
+
+    let slideCorrente = slideElements[slideAttiva];
+    slideCorrente.classList.add('active');
+
+    let slidePrecedente = slideElements[(slideAttiva + slideElements.length - 1) % slideElements.length];
+    slidePrecedente.classList.remove('active');
+
+}, 2000);
+
+setTimeout(function() {
+    clearInterval(duration);
+}, 2000 * images.length);

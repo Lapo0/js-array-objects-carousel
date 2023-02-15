@@ -36,7 +36,14 @@
 
 .text{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.2);
+    text-align: left;
+    border-radius: 0 50% 50% 0;
+    padding: 20px;
+}
+
+.text > p{
+    font-size: 14px;
 }
